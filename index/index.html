@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income calculator</title>
+</head>
+<body>
+    <style>
+            .container{
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background-color: yellowgreen;
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+            }
+
+            input{
+                border-radius: 10px;
+                padding: 10px 20px;
+                margin: 10px 0;
+            }
+
+    </style>
+    <div class="container">
+        <form onsubmit= "return false;">
+            <input id = "hoursInput" type = "text" placeholder = "How much main hours you work"/>
+            <input id = "extraInput" type = "text" placeholder = "How much extra hours you work"/>
+            <input onclick="onSubmit()" type = "submit" value="Calculate"/>
+        </form>
+        <div class="result">
+            <h1></h1>
+        </div>
+    </div>
+    <script>
+        function getSalary(hours, extra){
+            var solidHourPay = hours * 1000;
+            var extraHourPay = extra * 200;
+            var total = solidHourPay +  extraHourPay;
+            return total;
+        };
+
+        function onSubmit(){
+            console.log("I de work")
+            var extraInput = document.querySelector('#extraInput').value;
+            var hoursInput = document.querySelector('#hoursInput').value;
+
+            if(isNaN(extraInput) || isNaN(hoursInput)){
+                alert("Omo boy comport. Enter better thing unless you nor want the money");
+                return;
+            }
+
+            var salary = getSalary(hoursInput, extraInput);
+
+            var h1 = document.querySelector('.result h1');
+            h1.innerHTML = salary;
+        }
+    </script>
+</body>
+</html>
